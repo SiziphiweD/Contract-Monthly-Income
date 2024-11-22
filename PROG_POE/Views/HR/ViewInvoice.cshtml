@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PROG_POE.Models.Claim>
+
+@{
+    ViewData["Title"] = "View Invoice";
+}
+
+<div class="container mt-5">
+    <!-- Invoice Header -->
+    <div class="text-center mb-4">
+        <h1 class="fw-bold">Contract Monthly Claim Invoice</h1>
+    </div>
+
+    <!-- Lecturer Details -->
+    @if (Model.Any())  
+    {
+        var lecturer = Model.FirstOrDefault()?.Lecturer;
+        if (lecturer != null) 
+        {
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h4><strong>Lecturer Name:</strong><h6> @lecturer.FullName</h6></h4>
+                    <h4><strong>Lecturer Email:</strong><h6> @lecturer.Email</h6></h4>
+                </div>
+                <div class="col-md-6 text-end">
+                    <h4><strong>Date:</strong> @DateTime.Now.ToString("yyyy-MM-dd")</h4>
+                </div>
+            </div>
+        }
+        else
+        {
+            <p class="text-danger">Lecturer details not available.</p>
+        }
+    }
+    else
+    {
+        <p class="text-danger">No claims available.</p>
+    }
+
+    <!-- Invoice Table -->
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.HoursWorked)</th>
+                <th>@Html.DisplayNameFor(model => model.HourlyRate)</th>
+                <th>@Html.DisplayNameFor(model => model.TotalPayment)</th>
+                <th>@Html.DisplayNameFor(model => model.AdditionalNotes)</th>
+                <th>@Html.DisplayNameFor(model => model.ApprovedAt)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.HoursWorked</td>
+                    <td>@item.HourlyRate</td>
+                    <td>@item.TotalPayment</td>
+                    <td>@item.AdditionalNotes</td>
+                    <td>@item.ApprovedAt?.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Total Amount -->
+    <div class="text-end mt-4">
+        <h3 class="fw-bold">
+            Total Amount: R
+            @Model.Sum(m => m.TotalPayment) <!-- Format as numeric with 2 decimal places -->
+        </h3>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<PROG_POE.Models.Claim>
+
+@{
+    ViewData["Title"] = "Lecture Dashboard";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="NewClaim" class="btn btn-success mb-3">Create New Claim</a>
+</p>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.HoursWorked)</th>
+            <th>@Html.DisplayNameFor(model => model.HourlyRate)</th>
+            <th>@Html.DisplayNameFor(model => model.TotalPayment)</th>
+            <th>@Html.DisplayNameFor(model => model.AdditionalNotes)</th>
+            <th>@Html.DisplayNameFor(model => model.ClaimStatus)</th>
+            <th>@Html.DisplayNameFor(model => model.SubmittedAt)</th>
+            <th>@Html.DisplayNameFor(model => model.ApprovedAt)</th>
+            <th>Proof</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.HoursWorked)</td>
+                <td>@Html.DisplayFor(modelItem => item.HourlyRate)</td>
+                <td>@Html.DisplayFor(modelItem => item.TotalPayment)</td>
+                <td>@Html.DisplayFor(modelItem => item.AdditionalNotes)</td>
+                <td>
+                    @if (item.ClaimStatus == "Pending")
+                    {
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    }
+                    else if (item.ClaimStatus == "Approved")
+                    {
+                        <span class="badge bg-success text-white">Approved</span>
+                    }
+                    else if (item.ClaimStatus == "Rejected")
+                    {
+                        <span class="badge bg-danger text-white">Rejected</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary text-white">Unknown</span>
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.SubmittedAt)</td>
+                <td>@Html.DisplayFor(modelItem => item.ApprovedAt)</td>
+
+                <td>
+                    @if (item.SupportingDocuments != null && item.SupportingDocuments.Any())
+                    {
+                        foreach (var doc in item.SupportingDocuments)
+                        {
+                            <p>@doc.FileName</p>
+                            <a href="@Url.Action("DownloadDocument", "Lecture", new { id = doc.DocumentId })" class="btn btn-link">Download</a>
+                        }
+                    }
+                    else
+                    {
+                        <form method="post" enctype="multipart/form-data" asp-action="UploadDocument" asp-route-claimId="@item.ClaimId">
+                            <input type="file" name="document" class="form-control" />
+                            <button type="submit" class="btn btn-primary mt-2">Upload Proof</button>
+                        </form>
+                    }
+                </td>
+
+
+                <!-- Action Links -->
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ClaimId" class="btn btn-sm btn-warning">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ClaimId" class="btn btn-sm btn-info">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ClaimId" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this claim?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "HR Dashboard";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">@ViewData["Title"]</h1>
+
+    <div class="row">
+        <!-- Manage Lecturers -->
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Manage Lecturers</h5>
+                    <p class="card-text">Add, edit, or remove lecturers in the system.</p>
+                    <a asp-action="ManageLecturers" asp-controller="HR" class="btn btn-primary">Go to Lecturers</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Coordinators -->
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Manage Coordinators</h5>
+                    <p class="card-text">Manage coordinator accounts and permissions.</p>
+                    <a asp-action="ManageCoordinators" asp-controller="HR" class="btn btn-primary">Go to Coordinators</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Managers -->
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Manage Managers</h5>
+                    <p class="card-text">View and manage manager profiles and roles.</p>
+                    <a asp-action="ManageManagers" asp-controller="HR" class="btn btn-primary">Go to Managers</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Claims -->
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">View Claims</h5>
+                    <p class="card-text">Review and track submitted claims.</p>
+                    <a asp-action="VewClaims" asp-controller="HR" class="btn btn-primary">View Claims</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

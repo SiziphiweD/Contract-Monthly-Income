@@ -1,0 +1,127 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Bootstrap CSS for responsive design -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8i2KqfYz6Zls6/7v5gg7jw/jy+/p+e6waV2z3bOS1tA0SAywpB7aBqa8V5" crossorigin="anonymous">
+
+    <!-- Optional custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        .hero-section {
+            background-image: url('https://www.shutterstock.com/image-illustration/protection-safe-shield-safety-guard-600nw-1977081068.jpg'); /* Add your image URL here */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+        }
+
+            .hero-section h1 {
+                font-size: 3rem;
+                font-weight: bold;
+            }
+
+            .hero-section p {
+                font-size: 1.25rem;
+                margin-bottom: 30px;
+            }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+            .footer a {
+                color: #d3d3d3;
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+        .card-container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4">Welcome to Our Platform</h1>
+            <p>Discover the power of building scalable web applications with ASP.NET Core.</p>
+            <a href="https://learn.microsoft.com/aspnet/core" class="btn btn-primary btn-lg">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <div class="container text-center my-5">
+        <h2>About Our Platform</h2>
+        <p>Our platform is built with modern technologies to deliver an exceptional web experience. It’s scalable, secure, and easy to use. Join us in exploring the future of web development.</p>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container card-container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuHm7eM6vMEQPyPwy_IYnmh_kMaH6wpssoDw&s" class="card-img-top" alt="Feature 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Scalable</h5>
+                        <p class="card-text">Our platform grows with your needs. Start small, scale big.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMtsFifgple7m18QsIE5xSFKzK2m47aTaWXg&s" class="card-img-top" alt="Feature 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Secure</h5>
+                        <p class="card-text">We take security seriously, ensuring your data is safe and protected.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://www.legalwise.co.za/sites/default/files/styles/letterbox_sml/public/medial/images/2020-12/shutterstock_1383788444.jpg?h=a44e71c4&itok=gkHuVJdi" class="card-img-top" alt="Feature 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Easy to Use</h5>
+                        <p class="card-text">Our intuitive interface ensures that you can get started quickly and easily.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Siziphiwe Dlamini. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0g3abA3wG3F3p/3g6bb3q8zD4tL9G7H6mcm2T2+qhfuX9ecS" crossorigin="anonymous"></script>
+</body>
+</html>

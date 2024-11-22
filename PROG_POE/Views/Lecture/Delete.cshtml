@@ -1,0 +1,25 @@
+﻿@model PROG_POE.Models.Claim
+
+@{
+    ViewData["Title"] = "Delete Claim";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Are you sure you want to delete the claim with the following details?</p>
+
+<div>
+    <strong>Hours Worked:</strong> @Model.HoursWorked<br />
+    <strong>Hourly Rate:</strong> @Model.HourlyRate<br />
+    <strong>Total Payment:</strong> @Model.TotalPayment<br />
+    <strong>Additional Notes:</strong> @Model.AdditionalNotes<br />
+    <strong>Claim Status:</strong> @Model.ClaimStatus<br />
+    <strong>Submitted At:</strong> @Model.SubmittedAt<br />
+    <strong>Approved At:</strong> @Model.ApprovedAt<br />
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="ClaimId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="LectureDashboard" class="btn btn-secondary">Cancel</a>
+</form>

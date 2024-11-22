@@ -1,0 +1,61 @@
+﻿@model PROG_POE.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+    var message = TempData["Message"] as string;
+    var messageType = TempData["MessageType"] as string;
+}
+<script>
+    // Function to display alert messages
+    function showAlert(message, type) {
+        if (message) {
+            alert(`${type.toUpperCase()}: ${message}`);
+        }
+    }
+</script>
+
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card shadow-lg" style="max-width: 400px; width: 100%; padding: 30px;">
+        <h2 class="text-center mb-4">Login</h2>
+
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" style="max-width: 100%;" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PasswordHash" class="form-label">Password</label>
+                <input asp-for="PasswordHash" class="form-control" type="password" placeholder="Enter your password" />
+                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-4">
+                <input type="submit" value="Login" class="btn btn-primary w-100" />
+            </div>
+        </form>
+
+        <div class="text-center">
+            <a asp-action="Register" class="text-muted">Don't have an account? Register here</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Pass TempData values to the showAlert function
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <text>
+            showAlert('@message', '@messageType');
+        </text>
+    }
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
